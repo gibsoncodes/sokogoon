@@ -139,12 +139,17 @@ const Puzzle = ({levelData, format, changeBlock, fromEditor, setCurrLevel}) => {
     }
   }, [format, goalState, puzzleData])
 
+  const handleLevelChange = (level) => {
+    setCurrLevel(level)
+    setWonPuzzle(false);
+  }
+
   return (
     <React.Fragment>
         {wonPuzzle && <h1>WON PUZZLE</h1>}
         <div className='flex-row'>
             {[1,2,3, 4].map(num => {
-                return <button onClick={() => setCurrLevel(num - 1)} key={`num${num}`} className='level-select'>{num}</button>
+                return <button onClick={() => handleLevelChange(num)} key={`num${num}`} className='level-select'>{num}</button>
             })
             }
         </div>
